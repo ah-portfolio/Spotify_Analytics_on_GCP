@@ -22,13 +22,20 @@ Authentification to upload file on GCS is done by env variable => it is not idea
 #### Dbt run
 
 The second task run 2 models on Big Query. 
-  dbt_staging_spotify dataset :  table: list_of_track -> all the track played without duplicate caused by the extraction. Paris timezone because Spotify API date/time are in UTC. 
+  dbt_staging_spotify dataset :  table: list_of_track 
+  
+  -> all the track played without duplicate caused by the extraction & date_time at Paris timezone because Spotify API date/time is in UTC. 
+  
   ![image](https://github.com/ah-portfolio/Spotify_Analytics_on_GCP/assets/110063004/382b234a-72ec-414e-947c-bd469a8e528f)
 
-  dbt_rep_spotify dataset : table: ten_most_played_track_monthly -> ten most played track agregated by month.
+  dbt_rep_spotify dataset : table: ten_most_played_track_monthly
+  
+  -> ten most played track agregated by month.
+  
 ![image](https://github.com/ah-portfolio/Spotify_Analytics_on_GCP/assets/110063004/f825ccae-34ca-480c-b360-1a86ec84f675)
 
-Authentification between the pod which runs dbt and big query is oauth based authentification.
+
+Authentification between the pod which runs dbt and big query is oauth based authentification. (Token exchange between service account)
 
 
 ## Google Kubernetes Engine :
