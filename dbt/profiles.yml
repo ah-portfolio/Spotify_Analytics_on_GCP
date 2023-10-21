@@ -1,0 +1,15 @@
+adil_project:
+  outputs:
+    dev:
+      type: bigquery
+      dataset: dbt
+      job_execution_timeout_seconds: 100
+      job_retries: 1
+      location: us-central1
+      method: oauth
+      priority: interactive
+      project: daring-card-399612
+      threads: 1
+      impersonate_service_account: dbt-core-account@daring-card-399612.iam.gserviceaccount.com
+      
+  target: dev

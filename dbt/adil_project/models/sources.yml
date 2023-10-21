@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: dbt_raw_spotify
+    database: daring-card-399612  
+    schema: dbt_raw_spotify  
+    tables:
+      - name: data_from_api
