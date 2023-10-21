@@ -18,6 +18,7 @@ order by 3 desc
 limit 10)
 
 select 
+distinct
 mpt.month_year,
 mpt.number_of_time,
 mpt.most_played_track,
