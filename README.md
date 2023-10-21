@@ -28,6 +28,9 @@ A unique airflow dag runs two tasks scheduled each hour:
 #### Data extraction
 
 Data extraction from Spotify API of the last 50 played track of the user. Data is stored on GCS on this path adil_bucket_test_asa/raw_spotify/
+
+A dataset dbt_raw_spotify is created with one external table. In this way we can query csv files on big query.
+
 Extraction are stored on CSV, for bigger extracts other file format can be usefull (Parquet, Avro, ...)
 
 The data extraction run on a pod.
