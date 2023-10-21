@@ -37,6 +37,6 @@ models:
       +dataset: staging_spotify
 
     rep:
-      +dataset: rep_data_spotify
+      +dataset: rep_spotify
       +materialized: table
 
