@@ -14,11 +14,28 @@ Pods run thanks to images which are stored in Artifact Registry (on GCP). Here c
 
 ## Google Cloud Composer : Airflow 
 
-Composer runs kubernetes pods to execute the two tasks.
+Composer with KubernetesPodOperator runs kubernetes pods to execute the two tasks.
   ### Workload identity configuration :
 
-To make composer able to run pods, GCP advises to use Workload identity to make composer to launch pods:
+To make composer able to run pods, GCP advises to use Workload identity to make composer to launch pods https://cloud.google.com/composer/docs/composer-2/use-kubernetes-pod-operator?hl=fr
 
+Here commands to configure Workload identity configuration :
+        kubectl create namespace k8-executor
+        
+        kubectl create serviceaccount composer --namespace k8-executor
+        
+        gcloud iam service-accounts add-iam-policy-binding composer-service-account2@daring-card-399612.iam.gserviceaccount.com \
+            --role roles/iam.workloadIdentityUser \
+            --member "serviceAccount:daring-card-399612.svc.id.goog[k8-executor/composer]"
+        
+        kubectl annotate serviceaccount composer \
+            --namespace k8-executor \
+            iam.gke.io/gcp-service-account=composer-service-account2@daring-card-399612.iam.gserviceaccount.com
+
+When we call KubernetesPodOperator we can see a workload on the GKE cluster 
+
+
+![dag_run_composer](https://github.com/ah-portfolio/Spotify_Analytics_on_GCP/assets/110063004/6f383db4-f625-4bfb-94f3-b155679d7619)
 
 
   ### DAG
