@@ -21,8 +21,8 @@ with DAG(
         catchup=False
 ) as dag:
     extract_from_spotify = KubernetesPodOperator(
-        namespace="k8-executor",  # the new namespace you've created in the Workload Identity creation process
-        service_account_name="composer", # the new k8 service account you've created in the Workload Identity creation process
+        namespace="k8-executor",  
+        service_account_name="composer", 
         image="us-central1-docker.pkg.dev/daring-card-399612/docker-aho/image_extraction:2",
         cmds=["bash", "-cx"],
         arguments=["python get_t_with_refresh_t_and_data.py"],
@@ -35,8 +35,8 @@ with DAG(
         dag=dag
     )
     dbt_run = KubernetesPodOperator(
-        namespace="k8-executor",  # the new namespace you've created in the Workload Identity creation process
-        service_account_name="composer", # the new k8 service account you've created in the Workload Identity creation process
+        namespace="k8-executor",  
+        service_account_name="composer", 
         image="us-central1-docker.pkg.dev/daring-card-399612/docker-aho/image_dbt:3",
         cmds=["bash", "-cx"],
         arguments=["dbt run --project-dir dbt_k8_demo"],
