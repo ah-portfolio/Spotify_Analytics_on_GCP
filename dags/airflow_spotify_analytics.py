@@ -5,8 +5,6 @@ from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import Kubernete
 
 with DAG(
         'airflow_spotify_analytics',
-        # These args will get passed on to each operator
-        # You can override them on a per-task basis during operator initialization
         default_args={
             'depends_on_past': False,
             'email': ['airflow@example.com'],
